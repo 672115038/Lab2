@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import { R } from 'vue-router/dist/index-BQLwgiyK.js';
 </script>
 
 <template>
