@@ -64,6 +64,11 @@ const router = createRouter({
       name: 'not-found',
       component: NotFoundView,
     },
+    {
+      path: '/network-error',
+      name: 'network-error-view',
+      component: NotFoundView,
+    },
   ],
 })
 
