@@ -4,7 +4,6 @@ import CategoryOrganizer from '@/components/CategoryOrganizer.vue'
 import type { Event } from '@/types'
 import { ref, onMounted, computed, watchEffect } from 'vue'
 import EventService from '@/services/EventService'
-import nProgress from 'nprogress'
 // const events = ref<Event[]>([
 //   {
 //     id: 5928101,
@@ -63,7 +62,6 @@ const hasNextPage = computed(() => {
 
 onMounted(() => {
   watchEffect(() => {
-    nProgress.start()
     events.value = null
     EventService.getEvents(perPage.value, page.value)
       .then((response) => {
@@ -72,9 +70,6 @@ onMounted(() => {
       })
       .catch((error) => {
         console.error('There was an error!', error)
-      })
-      .finally(() => {
-        nProgress.done()
       })
   })
 })
