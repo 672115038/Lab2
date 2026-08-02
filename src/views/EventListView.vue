@@ -56,13 +56,13 @@ const props = defineProps({
 const page = computed(() => props.page)
 const perPage = computed(() => props.size)
 const hasNextPage = computed(() => {
-  const totalPages = Math.ceil(Number(totalEvents.value) / perPage.value)
+  const totalPages = Math.ceil(totalEvents.value / 3)
   return page.value < totalPages
 })
 
 onMounted(() => {
   watchEffect(() => {
-    EventService.getEvents(perPage.value, page.value)
+    EventService.getEvents(3, page.value)
       .then((response) => {
         events.value = response.data
         totalEvents.value = response.headers['x-total-count']
