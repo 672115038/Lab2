@@ -2,7 +2,7 @@
 import EventCard from '@/components/EventCard.vue'
 import CategoryOrganizer from '@/components/CategoryOrganizer.vue'
 import type { Event } from '@/types'
-import { ref, onMounted, computed, watchEffect } from 'vue'
+import { ref, computed, watchEffect } from 'vue'
 import EventService from '@/services/EventService'
 // const events = ref<Event[]>([
 //   {
@@ -39,7 +39,7 @@ import EventService from '@/services/EventService'
 //     organizer: 'Carey Wales',
 //   },
 // ])
-const events = ref<Event[] | null>(null)
+const events = ref<Event[]>([])
 const totalEvents = ref(0)
 const props = defineProps({
   page: {
@@ -56,21 +56,18 @@ const props = defineProps({
 const page = computed(() => props.page)
 const perPage = computed(() => props.size)
 const hasNextPage = computed(() => {
-  const totalPages = Math.ceil(totalEvents.value / 3)
-  return page.value < totalPages
+  return page.value * perPage.value < totalEvents.value
 })
 
-onMounted(() => {
-  watchEffect(() => {
-    EventService.getEvents(3, page.value)
-      .then((response) => {
-        events.value = response.data
-        totalEvents.value = response.headers['x-total-count']
-      })
-      .catch((error) => {
-        console.error('There was an error!', error)
-      })
-  })
+watchEffect(() => {
+  EventService.getEvents(perPage.value, page.value)
+    .then((response) => {
+      events.value = response.data
+      totalEvents.value = Number(response.headers['x-total-count'] || 0)
+    })
+    .catch((error) => {
+      console.error('There was an error!', error)
+    })
 })
 </script>
 
