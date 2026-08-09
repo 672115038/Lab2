@@ -18,9 +18,10 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterView /> -->
   <div class="text-center font-sans text-grey-700 antialiased">
     <header>
-      <div id="flashMessage" class="animate-fade" v-if="message">
+      <!-- <div id="flashMessage" class="animate-fade" v-if="message">
         <h4>{{ message }}</h4>
-      </div>
+      </div> -->
+      <h1>Deploy with Vercel</h1>
       <div class="wrapper">
         <nav class="py-6">
           <RouterLink
