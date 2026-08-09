@@ -74,7 +74,7 @@ watchEffect(() => {
 <template>
   <h1>Events For Good</h1>
 
-  <div class="events">
+  <div class="flex flex-col items-center">
     <div v-for="event in events" :key="event.id" class="event-pair">
       <EventCard :event="event" />
       <CategoryOrganizer :event="event" />
@@ -99,12 +99,6 @@ watchEffect(() => {
 </template>
 
 <style scoped>
-.events {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .event-pair {
   display: flex;
   flex-direction: column;
