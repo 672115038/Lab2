@@ -66,5 +66,43 @@
       "petsAllowed": false,
       "organizer": "Brody Kill"
     }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "user1",
+      "password": "1234567890",
+      "firstName": "Thanawat",
+      "lastName": "Wongin",
+      "province": "Chiang Mai",
+      "level": 1
+    },
+    {
+      "id": "2",
+      "username": "user2",
+      "password": "0987654321",
+      "firstName": "Chetsada",
+      "lastName": "Kankarn",
+      "province": "Udonthani",
+      "level": 2
+    },
+    {
+      "id": "3",
+      "username": "user3",
+      "password": "abcd",
+      "firstName": "Phurinat",
+      "lastName": "Arpornhirun",
+      "province": "Chunburi",
+      "level": 3
+    },
+    {
+      "id": "4",
+      "username": "user4",
+      "password": "1234",
+      "firstName": "Some",
+      "lastName": "One",
+      "province": "Phuket",
+      "level": 4
+    }
   ]
 }
