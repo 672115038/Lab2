@@ -1,5 +1,5 @@
 export interface Event {
-  id: number
+  id?: number | null
   category: string
   title: string
   description: string
@@ -7,7 +7,12 @@ export interface Event {
   date: string
   time: string
   petsAllowed: boolean
-  organizer: string
+  organizer: Organizer
+}
+
+export interface Organizer {
+  id: number
+  name: string
 }
 
 export interface Student {

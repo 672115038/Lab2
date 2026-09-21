@@ -22,7 +22,7 @@ onMounted(() => {
     <div v-if="store.message" id="flashMessage">
       <h4>{{ store.message }}</h4>
     </div>
-    <p>{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>
+    <p>{{ event.title }} @ {{ event.location }}</p>
     <p>{{ event.description }}</p>
   </div>
 </template>

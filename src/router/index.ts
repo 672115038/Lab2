@@ -10,6 +10,8 @@ import NotFoundView from '@/views/NotFoundView.vue'
 import nProgress from 'nprogress'
 import EventService from '@/services/EventService'
 import { useEventStore } from '@/stores/event'
+import NetworkErrorView from '@/views/NetworkErrorView.vue'
+import AddEventView from '@/views/event/EventFormView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -78,6 +80,11 @@ const router = createRouter({
       component: AboutView,
     },
     {
+      path: '/add-event',
+      name: 'add-event',
+      component: AddEventView,
+    },
+    {
       path: '/404/resource',
       name: '404-resource-view',
       component: NotFoundView,
@@ -91,7 +98,7 @@ const router = createRouter({
     {
       path: '/network-error',
       name: 'network-error-view',
-      component: NotFoundView,
+      component: NetworkErrorView,
     },
   ],
   scrollBehavior(to, from, savedPosition) {
