@@ -1,10 +1,24 @@
 <script setup lang="ts">
-import type { Event } from '@/types'
+import { onMounted } from 'vue'
 import { ref } from 'vue'
 import EventService from '@/services/EventService'
 import { useRouter } from 'vue-router'
 import { useMessageStore } from '@/stores/message'
 import BaseInput from '@/components/BaseInput.vue'
+import BaseSelect from '@/components/BaseSelect.vue'
+import type { Event, Organizer } from '@/types'
+import OrganizerService from '@/services/OrganizerService'
+
+const organizers = ref<Organizer[]>([])
+onMounted(() => {
+  OrganizerService.getOrganizers()
+    .then((response) => {
+      organizers.value = response.data
+    })
+    .catch(() => {
+      router.push({ name: 'network-error-view' })
+    })
+})
 
 const event = ref<Event>({
   id: undefined,
@@ -55,6 +69,9 @@ function saveEvent() {
 
       <h3>Where is your event?</h3>
       <BaseInput v-model="event.location" type="text" label="Location" />
+
+      <label class="block text-gray-500 font-bold">Select an Organizer</label>
+      <BaseSelect v-model="event.organizer.id" :options="organizers" label="Organizer" />
 
       <button
         class="flex w-fit mx-auto items-center justify-center h-13 px-10 rounded-md font-semibold whitespace-nowrap border border-gray-400 focus:border-emerald-500 transition-all duration-200 ease-linear hover:scale-105 hover:border-emerald-500 hover:shadow-lg active:scale-100 focus:outline-none"

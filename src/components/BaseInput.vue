@@ -1,10 +1,11 @@
-<script>
+<script setup lang="ts">
 const modelValue = defineModel()
+
 interface BaseInputProps {
-    label: string
+  label: string
 }
 const props = withDefaults(defineProps<BaseInputProps>(), {
-    label: '',
+  label: '',
 })
 </script>
 <template>
